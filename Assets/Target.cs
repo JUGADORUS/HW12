@@ -22,6 +22,9 @@ public class Target : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(other.gameObject);
+        if (other.TryGetComponent<EnemyTypeOne>(out EnemyTypeOne enemyTypeOne) || other.TryGetComponent<EnemyTypeTwo>(out EnemyTypeTwo enemyTypeTwo))
+        {
+            Destroy(other.gameObject);
+        }
     }
 }
