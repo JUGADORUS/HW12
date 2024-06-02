@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Target : MonoBehaviour
@@ -22,7 +20,7 @@ public class Target : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<EnemyTypeOne>(out EnemyTypeOne enemyTypeOne) || other.TryGetComponent<EnemyTypeTwo>(out EnemyTypeTwo enemyTypeTwo))
+        if (other.TryGetComponent<Enemy>(out Enemy enemy))
         {
             Destroy(other.gameObject);
         }

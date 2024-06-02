@@ -1,10 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
-public class SpawnerTypeTwo : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _enemy;
-    [SerializeField] private GameObject _target;
+    [SerializeField] private Enemy _enemy;
+    [SerializeField] private Target _target;
 
     private int _delay = 2;
 
@@ -13,16 +13,16 @@ public class SpawnerTypeTwo : MonoBehaviour
         StartCoroutine(SpawnEnemy());
     }
 
-    IEnumerator SpawnEnemy()
+    private IEnumerator SpawnEnemy()
     {
         while (true)
         {
             yield return new WaitForSeconds(_delay);
             Instantiate(_enemy, transform.position, Quaternion.identity);
 
-            if (_enemy.TryGetComponent<EnemyTypeTwo>(out EnemyTypeTwo enemy))
+            if (_enemy.TryGetComponent<Enemy>(out Enemy enemy))
             {
-                _enemy.GetComponent<EnemyTypeTwo>().Target = _target;
+                _enemy.GetComponent<Enemy>().Target = _target.transform;
             }
         }
     }
