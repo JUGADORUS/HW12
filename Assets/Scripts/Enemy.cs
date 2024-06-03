@@ -2,12 +2,17 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] public Transform Target;
+    [SerializeField] private Transform _target;
     [SerializeField] private float _speed;
 
     private void Update()
     {
-        MoveToTarget(Target);
+        MoveToTarget(_target);
+    }
+
+    public void SetTarget(Transform target)
+    {
+        _target = target;
     }
 
     private void MoveToTarget(Transform target)

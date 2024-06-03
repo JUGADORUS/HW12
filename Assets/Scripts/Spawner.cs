@@ -18,12 +18,9 @@ public class Spawner : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(_delay);
-            Instantiate(_enemy, transform.position, Quaternion.identity);
+            Enemy enemy = Instantiate(_enemy, transform.position, Quaternion.identity);
 
-            if (_enemy.TryGetComponent<Enemy>(out Enemy enemy))
-            {
-                _enemy.GetComponent<Enemy>().Target = _target.transform;
-            }
+            enemy.SetTarget(_target.transform);
         }
     }
 }
